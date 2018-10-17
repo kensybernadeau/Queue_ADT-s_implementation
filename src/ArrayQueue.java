@@ -42,9 +42,15 @@ public class ArrayQueue<E> implements Queue<E> {
 			changeCapacity(2*size); 
 	}
 
-	private void changeCapacity(int newCapacity) { 
+	private void changeCapacity(int change) { 
 		// PRE: newCapacity >= size
-
+		int newCapacity = elements.length + change; 
+		E[] newElement = (E[]) new Object[newCapacity]; 
+		for (int i=0; i<size; i++) { 
+			newElement[i] = elements[i]; 
+			elements[i] = null; 
+		} 
+		elements = newElement; 
 	}
 	
 
